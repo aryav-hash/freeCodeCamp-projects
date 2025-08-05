@@ -1,0 +1,112 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #3b3b4f;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #0a0a23;
+}
+
+.heading {
+    color: white;
+    text-align: center;
+    margin-top: 8rem;
+}
+
+.phone-container {
+    width: auto;
+    height: 520px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.phone-case {
+    background-color: #dfdfe2;
+    width: 260px;
+    height: 440px;
+    border: 15px solid black;
+    border-radius: 15px;
+}
+
+.top-section {
+    width: 230px;
+    height: 25px;
+    background-color: #0a0a23;
+    display: flex;
+    justify-content: center;
+}
+
+.round-ball {
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50px;
+}
+
+.mid-section {
+    height: 340px;
+    width: 230px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.end-section {
+    height: 45px;
+    width: 230px;
+    background-color: #0a0a23;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.end-buttons {
+    margin-top: 5px;
+    width: 80px;
+    height: 27px;
+    padding: 3px;
+    font-size: large;
+    background-color: #ffffff;
+    background-image: linear-gradient(#ffffff, #928d86);
+    border: 3px solid #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.instructions {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.input-div {
+    width: 230px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input {
+    width: 200px;
+    height: 40px;
+    border-radius: 12px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.output {
+    overflow-y: auto;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.output-text {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
