@@ -1,0 +1,83 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: #0a0a23;
+    color: #dfdfe2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.heading {
+    margin: 50px 0 30px 0;
+    font-size: 3rem;
+    text-align: center;
+}
+.change {
+    display: none;
+    min-width: none;
+    max-width: 300px;
+    height: 220px;
+    padding: 10px;
+}
+.entry {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.instruct {
+    margin: 20px 0 10px 0;
+    font-size: 20px;
+}
+.input-box {
+    margin-bottom: 20px;
+    height: 30px;
+    padding: 10px;
+    font-size: 16px;
+}
+.submit-btn {
+    cursor: pointer;
+    width: 100px;
+    height: 30px;
+    color: #0a0a23;
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #feac32;
+    background-image: linear-gradient(#fecc4c, #ffac33);
+    border-color: #feac32;
+    border-width: 3px;
+}
+.cash-register {
+    margin: 30px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    width: 250px;
+    height: 350px;
+}
+.amt {
+    font-size: 20px;
+    width: 140px;
+    height: 40px;
+    text-align: center;
+    padding: 5px;
+    border: 5px solid blue;
+}
+.cash {
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+    margin-top: 20px;
+    background-color: white;
+    width: 85%;
+    height: 80%;
+}
+.cash-amts {
+    color: #0a0a23;
+    font-size: 19px;
+}
