@@ -25,29 +25,116 @@ let m = {
     'TEN': 10,
     'TWENTY': 20,
     'ONE HUNDRED': 100
-}
+};
 
-const updateCashDrawer = (cid) => {
+const updateCashDrawer = () => {
     cid.forEach(([str, amt]) => {
-        document.getElementById(str.toLowerCase()).textContent = `${str}: ${amt}`;
+        document.getElementById(str.toLowerCase()).textContent = `${str}: \$${amt}`;
     });
+};
+
+const updateCid = (sub) => {
+    cid.forEach(([str, amt]) => {
+        amt -= sub[str];
+        document.getElementById(str.toLowerCase()).textContent = `${str}: \$${amt}`;
+    });
+};
+
+const handOutChange = (dict) => {
+    change.innerHTML = '';
+    change.style.display = 'block';
+    const p = document.createElement('p');
+    p.textContent = 'Status: OPEN';
+    change.appendChild(p);
+    Object.entries(dict).forEach(([key, value]) => {
+        if (value !== 0) {
+            const p = document.createElement('p');
+            p.textContent = `${key}: \$${value}`;
+            change.appendChild(p);
+        }
+    });
+    return ;
+}; 
+
+const close = (dict) => {
+    change.innerHTML = '';
+    change.style.display = 'block';
+    const p = document.createElement('p');
+    p.textContent = 'STATUS: CLOSED';
+    change.appendChild(p);
+    Object.entries(dict).forEach(([key, value]) => {
+        if (value !== 0) {
+            const p = document.createElement('p');
+            p.textContent = `${key}: \$${value}`;
+            change.appendChild(p);
+        }
+    });
+    return ;
 }
 
-updateCashDrawer(cid);
+updateCashDrawer();
 
 const calculateFunds = () => {
     const size = cid.length;
-    let price = Number(input.value);
+    let rem = Number(input.value) - Number(price);
+    rem = Math.round(rem * 100) / 100;
+    let sub = {
+        'PENNY': 0,
+        'NICKEL': 0,
+        'DIME': 0,
+        'QUARTER': 0,
+        'ONE': 0,
+        'FIVE': 0,
+        'TEN': 0,
+        'TWENTY': 0,
+        'ONE HUNDRED': 0
+    };
+
+    let dict = {
+        'PENNY': 0,
+        'NICKEL': 0,
+        'DIME': 0,
+        'QUARTER': 0,
+        'ONE': 0,
+        'FIVE': 0,
+        'TEN': 0,
+        'TWENTY': 0,
+        'ONE HUNDRED': 0
+    };
+
     for (let i = size-1; i >= 0; i--) {
-        if (m[cid[i][0]] > price) {
+        if (m[cid[i][0]] > rem) {
             continue;
         }
         else {
-            while (price > m[cid[i][0]] && cid[i][1] > 0 && cid[i][0] - price) {
-
+            let currentAmt = cid[i][1];
+            while (rem >= m[cid[i][0]] && currentAmt > 0) {
+                rem = Math.round((rem - m[cid[i][0]])*100)/100;
+                sub[cid[i][0]] += m[cid[i][0]];
+                currentAmt = Math.round((currentAmt - m[cid[i][0]])*100)/100;
+                dict[cid[i][0]] += m[cid[i][0]];
             }
         }
     }
+
+    console.log(rem);
+    if (rem !== 0) {
+        change.innerHTML = '';
+        change.style.display = 'block';
+        const para = document.createElement('p');
+        para.textContent = 'Status: INSUFFICIENT_FUNDS';
+        change.appendChild(para);
+        return ;
+    }
+
+    updateCid(sub);
+
+    const val = cid.reduce((acc, curr) => acc + curr[1], 0);
+    if (val === 0) {
+        close(dict);
+        return ;
+    }
+    handOutChange(dict);
 }
 
 const validateCash = () => {
