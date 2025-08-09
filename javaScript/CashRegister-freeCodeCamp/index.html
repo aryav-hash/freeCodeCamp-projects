@@ -8,26 +8,26 @@
 </head>
 <body>
     <h1 class="heading">Cash Register Project</h1>
-    <div class="change">
+    <div id="change-due" class="change">
     </div>
     <div class="entry">
         <p class="instruct">Enter cash from customer:</p>
-        <input type="number" class="input-box" min="0" />
-        <button class="submit-btn" type="button">Purchase</button>
+        <input id="cash" type="number" class="input-box" min="0" />
+        <button id="purchase-btn" class="submit-btn" type="button">Purchase</button>
     </div>
     <div class="cash-register">
-        <p class="amt">Total: $3.36</p>
+        <p class="amt">Total: $3.26</p>
         <div class="cash">
-            <p class="cash-amts" style="font-weight: bold;">Change in drawer:- </p>
-            <p class="cash-amts">Pennies: </p>
-            <p class="cash-amts">Nickels: </p>
-            <p class="cash-amts">Dimes: </p>
-            <p class="cash-amts">Quarters: </p>
-            <p class="cash-amts">Ones: </p>
-            <p class="cash-amts">Fives: </p>
-            <p class="cash-amts">Tens: </p>
-            <p class="cash-amts">Twenties: </p>
-            <p class="cash-amts">Hundreds: </p>
+            <p class="cash-amts" style="font-weight: bold; padding-bottom: 3px;">Change in drawer:- </p>
+            <p class="cash-amts" id="penny">Pennies: </p>
+            <p class="cash-amts" id="nickel">Nickels: </p>
+            <p class="cash-amts" id="dime">Dimes: </p>
+            <p class="cash-amts" id="quarter">Quarters: </p>
+            <p class="cash-amts" id="one">Ones: </p>
+            <p class="cash-amts" id="five">Fives: </p>
+            <p class="cash-amts" id="ten">Tens: </p>
+            <p class="cash-amts" id="twenty">Twenties: </p>
+            <p class="cash-amts" id="one hundred">Hundreds: </p>
         </div>
     </div>
     <script src="script.js"></script>

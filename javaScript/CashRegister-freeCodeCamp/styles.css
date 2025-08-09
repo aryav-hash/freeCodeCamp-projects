@@ -17,9 +17,12 @@ body {
 }
 .change {
     display: none;
+    font-size: 18px;
+    text-align: center;
     min-width: none;
     max-width: 300px;
-    height: 220px;
+    min-height: none;
+    max-height: 220px;
     padding: 10px;
 }
 .entry {
@@ -79,5 +82,5 @@ body {
 }
 .cash-amts {
     color: #0a0a23;
-    font-size: 19px;
+    font-size: 18px;
 }
