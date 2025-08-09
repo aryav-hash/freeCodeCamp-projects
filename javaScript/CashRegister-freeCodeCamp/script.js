@@ -1,7 +1,9 @@
-const input = document.getElementById('cash');
+const cash = document.getElementById('cash');
 const submit = document.getElementById('purchase-btn');
 const change = document.getElementById('change-due');
+const pr = document.querySelector('.amt');
 let price = '3.26';
+pr.textContent = `Total: \$${price}`;
 
 let cid = [
   ['PENNY', 1.01],
@@ -46,7 +48,7 @@ const handOutChange = (dict) => {
     const p = document.createElement('p');
     p.textContent = 'Status: OPEN';
     change.appendChild(p);
-    Object.entries(dict).forEach(([key, value]) => {
+    Object.entries(dict).reverse().forEach(([key, value]) => {
         if (value !== 0) {
             const p = document.createElement('p');
             p.textContent = `${key}: \$${value}`;
@@ -62,7 +64,7 @@ const close = (dict) => {
     const p = document.createElement('p');
     p.textContent = 'STATUS: CLOSED';
     change.appendChild(p);
-    Object.entries(dict).forEach(([key, value]) => {
+    Object.entries(dict).reverse().forEach(([key, value]) => {
         if (value !== 0) {
             const p = document.createElement('p');
             p.textContent = `${key}: \$${value}`;
@@ -76,7 +78,7 @@ updateCashDrawer();
 
 const calculateFunds = () => {
     const size = cid.length;
-    let rem = Number(input.value) - Number(price);
+    let rem = Number(cash.value) - Number(price);
     rem = Math.round(rem * 100) / 100;
     let sub = {
         'PENNY': 0,
@@ -110,9 +112,9 @@ const calculateFunds = () => {
             let currentAmt = cid[i][1];
             while (rem >= m[cid[i][0]] && currentAmt > 0) {
                 rem = Math.round((rem - m[cid[i][0]])*100)/100;
-                sub[cid[i][0]] += m[cid[i][0]];
+                sub[cid[i][0]] = Math.round(100*(sub[cid[i][0]] + m[cid[i][0]]))/100;
                 currentAmt = Math.round((currentAmt - m[cid[i][0]])*100)/100;
-                dict[cid[i][0]] += m[cid[i][0]];
+                dict[cid[i][0]] = Math.round(100*(dict[cid[i][0]] + m[cid[i][0]]))/100;
             }
         }
     }
@@ -138,13 +140,13 @@ const calculateFunds = () => {
 }
 
 const validateCash = () => {
-    if (input.value < 3.26) {
+    if (cash.value < Number(price)) {
         change.innerHTML = '';
         change.style.display = 'none';
         alert('Customer does not have enough money to purchase the item');
         return ;
     }
-    if (input.value === price) {
+    if (cash.value === price) {
         change.innerHTML = '';
         change.style.display = 'block';
         const para = document.createElement('p');
