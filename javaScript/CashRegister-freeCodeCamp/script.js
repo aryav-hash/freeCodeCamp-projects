@@ -36,9 +36,9 @@ const updateCashDrawer = () => {
 };
 
 const updateCid = (sub) => {
-    cid.forEach(([str, amt]) => {
-        amt -= sub[str];
-        document.getElementById(str.toLowerCase()).textContent = `${str}: \$${amt}`;
+    cid.forEach((item) => {
+        item[1] = Math.round((item[1] - sub[item[0]])*100)/100;
+        document.getElementById(item[0].toLowerCase()).textContent = `${item[0]}: \$${item[1]}`;
     });
 };
 
@@ -119,7 +119,6 @@ const calculateFunds = () => {
         }
     }
 
-    console.log(rem);
     if (rem !== 0) {
         change.innerHTML = '';
         change.style.display = 'block';
@@ -140,13 +139,13 @@ const calculateFunds = () => {
 }
 
 const validateCash = () => {
-    if (cash.value < Number(price)) {
+    if (Number(cash.value) < Number(price)) {
         change.innerHTML = '';
         change.style.display = 'none';
         alert('Customer does not have enough money to purchase the item');
         return ;
     }
-    if (cash.value === price) {
+    if (Number(cash.value) === Number(price)) {
         change.innerHTML = '';
         change.style.display = 'block';
         const para = document.createElement('p');
@@ -155,9 +154,15 @@ const validateCash = () => {
         return ;
     }
 
+    console.log()
     calculateFunds();
     return ;
 };
 
 submit.addEventListener('click', validateCash);
+submit.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+        validateCash();
+    }
+});
 
