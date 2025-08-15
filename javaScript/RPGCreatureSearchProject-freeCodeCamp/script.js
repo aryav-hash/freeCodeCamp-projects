@@ -68,6 +68,7 @@ const run = () => {
         const new_url = details_URL + `${creature.id}`; 
         creatureApiCall(new_url).then((data) => {
             displayName.textContent = data.name;
+            displayId.textContent = '#' + data.id;
             displayId.textContent = data.id;
             displayWeight.textContent = `Weight: ${data.weight}`;
             displayHeight.textContent = `Height: ${data.height}`;
