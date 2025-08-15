@@ -42,6 +42,7 @@ body {
 .input-div {
     display: flex;
     gap: 10px;
+    padding-bottom: 20px;
 }
 
 .instructions {
@@ -64,4 +65,44 @@ body {
     padding: 10px 15px 10px 15px;
     color: white;
     background-color: #7f21ab;
+}
+
+.creature-display-div {
+    height: 200px;
+    width: 98%;
+    background-color: #f0f1f7;
+    padding-bottom: 5px;
+}
+
+.creature-stats-div {
+    width: 98%;
+    height: 300px;
+    padding-top: 8px;
+}
+
+.labels {
+    display: flex;
+    padding: 2px;
+    gap: 5px;
+}
+
+.base {
+    width: 60%;
+    height: 40px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #7f21ab;
+    color:#f5f6f7;
+}
+
+.stats {
+    width: 40%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #7f21ab;
+    color:#f5f6f7;
 }
