@@ -39,8 +39,8 @@ const creatureApiCall = async(new_URL) => {
 }   
 
 const clearOutput = () => {
-    displayName.textContent = '';
-    displayId.textContent = '';
+    displayName.innerHTML = '<span id="creature-id" style="font-weight: lighter; padding-left: 10px;"></span>';
+    displayId.innerHTML = '';
     displayWeight.textContent = '';
     displayHeight.textContent = '';
     displayTypes.innerHTML = '';
@@ -67,9 +67,8 @@ const run = () => {
 
         const new_url = details_URL + `${creature.id}`; 
         creatureApiCall(new_url).then((data) => {
-            displayName.textContent = data.name;
-            displayId.textContent = '#' + data.id;
-            displayId.textContent = data.id;
+            displayName.innerHTML = `${data.name}<span id="creature-id" style="font-weight: lighter; padding-left: 10px;"></span>`;
+            document.getElementById('creature-id').textContent = `#${data.id}`;
             displayWeight.textContent = `Weight: ${data.weight}`;
             displayHeight.textContent = `Height: ${data.height}`;
 
