@@ -1,4 +1,4 @@
-const URL = "https://rpg-creature-api.freecodecamp.rocks/api/creatures";
+//const URL = "https://rpg-creature-api.freecodecamp.rocks/api/creatures";
 let details_URL = "https://rpg-creature-api.freecodecamp.rocks/api/creature/";
 
 const input = document.getElementById('search-input');
@@ -15,10 +15,9 @@ const displaySA = document.getElementById('special-attack');
 const displaySD = document.getElementById('special-defense');
 const displaySpeed = document.getElementById('speed');
 
-
-const api = async() => {
+const api = async(userInput) => {
     try {
-        let result = await fetch(URL);
+        let result = await fetch(details_URL + `${userInput.toLowerCase()}`);
         let data = await result.json();
         return data;
     }
@@ -27,20 +26,9 @@ const api = async() => {
     }
 };
 
-const creatureApiCall = async(new_URL) => {
-    try {
-        let result = await fetch(new_URL);
-        let data = await result.json();
-        return data;
-    }
-    catch (err) {
-        console.log(err);
-    }
-}   
-
 const clearOutput = () => {
-    displayName.innerHTML = '<span id="creature-id" style="font-weight: lighter; padding-left: 10px;"></span>';
-    displayId.innerHTML = '';
+    displayName.textContent = '';
+    displayId.textContent = '';
     displayWeight.textContent = '';
     displayHeight.textContent = '';
     displayTypes.innerHTML = '';
@@ -55,37 +43,29 @@ const clearOutput = () => {
 const run = () => {
     clearOutput();
     const userInput = input.value;
-    api().then((data) => {
-        const creature = data.find(({id, name}) =>
-            id === Number(userInput) || name.toLowerCase() === userInput.toLowerCase() 
-        );
-
-        if (!creature) {
+    api(userInput).then((data) => {
+        if (!data || !data.id) {
             alert("Creature not found");
             return;
         }
 
-        const new_url = details_URL + `${creature.id}`; 
-        creatureApiCall(new_url).then((data) => {
-            displayName.innerHTML = `${data.name}<span id="creature-id" style="font-weight: lighter; padding-left: 10px;"></span>`;
-            document.getElementById('creature-id').textContent = `#${data.id}`;
-            displayWeight.textContent = `Weight: ${data.weight}`;
-            displayHeight.textContent = `Height: ${data.height}`;
+        displayName.innerHTML = `${data.name.toUpperCase()}`;
+        displayId.textContent = `#${data.id}`;
+        displayWeight.textContent = `Weight: ${data.weight}`;
+        displayHeight.textContent = `Height: ${data.height}`;
 
-            data.types.forEach(({name}) => {
-                const span = document.createElement("span");
-                span.className = "type";
-                span.textContent = name;
-                displayTypes.appendChild(span);
-            });
+        data.types.forEach(({name}) => {
+            const span = document.createElement("span");
+            span.className = "type";
+            span.textContent = name;
+            displayTypes.appendChild(span);
+        });
 
-            data.stats.forEach(({base_stat, name}) => {
-                document.getElementById(name).textContent = base_stat;
-            });
+        data.stats.forEach(({base_stat, name}) => {
+            document.getElementById(name).textContent = base_stat;
         });
     });
 
 };
 
 submitBtn.addEventListener('click', run);
-
