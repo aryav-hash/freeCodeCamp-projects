@@ -12,10 +12,15 @@
         <div class="content-div">
             <p class="instructions">Search for Creature Name or ID:</p>
             <div class="input-div">
-                <input type="text" class="creature-input" placeholder="Creature Name"/>
-                <button class="search-btn" type="submit">Search</button>
+                <input type="text" id="search-input" class="creature-input" placeholder="Creature Name"/>
+                <button class="search-btn" id="search-button" type="submit">Search</button>
             </div>
-            <div class="creature-display-div"></div>
+            <div class="creature-display-div">
+                <p id="creature-name"><span id="creature-id" style="font-weight: lighter; padding-left: 10px;"></span></p>
+                <div class="weight-and-height">
+                    <span id="weight"></span> <span id="height"></span></div>
+                <div id="types"></div>
+            </div>
             <div class="creature-stats-div">
                 <div class="labels">
                     <span class="base" style="font-size: large;">Base</span>
@@ -23,27 +28,27 @@
                 </div>
                 <div class="labels">
                     <span class="base">HP:</span>
-                    <span class="stats"></span>
+                    <span class="stats" id="hp"></span>
                 </div>
                 <div class="labels">
                     <span class="base">Attack:</span>
-                    <span class="stats"></span>
+                    <span class="stats" id="attack"></span>
                 </div>
                 <div class="labels">
                     <span class="base">Defense:</span>
-                    <span class="stats"></span>
+                    <span class="stats" id="defense"></span>
                 </div>
                 <div class="labels">
                     <span class="base">Sp. Attack</span>
-                    <span class="stats"></span>
+                    <span class="stats" id="special-attack"></span>
                 </div>
                 <div class="labels">
                     <span class="base">Sp. Defense</span>
-                    <span class="stats"></span>
+                    <span class="stats" id="special-defense"></span>
                 </div>
                 <div class="labels">
                     <span class="base">Speed</span>
-                    <span class="stats"></span>
+                    <span class="stats" id="speed"></span>
                 </div>
             </div>
         </div>

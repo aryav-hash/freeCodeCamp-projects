@@ -106,3 +106,31 @@ body {
     background-color: #7f21ab;
     color:#f5f6f7;
 }
+
+#creature-name {
+    font-weight: bold;
+    padding: 15px 5px 5px 10px;
+    font-size: 18px;
+}
+
+.weight-and-height {
+    padding-left: 10px;
+    font-size: 13px;
+}
+
+#types {
+    display: flex;
+    gap: 10px;
+    padding: 10px 5px 5px 5px;
+}
+
+.type {
+    width: 75px;
+    height: 30px;
+    padding: 5px;
+    font-size: 0.8rem;
+    text-align: center;
+    border-radius: 5px;
+    text-transform: uppercase;
+    background-color: antiquewhite;
+}
